@@ -1,41 +1,40 @@
 'use strict';
-function Robot(name, year, owner) {
-    this.name = name;
-    this.year = year;
-    this.owner = owner;
+class Robot {
+    constructor(name, year, owner) {
+        this.name = name;
+        this.year = year;
+        this.owner = owner;
+    }
+
+    speak() {
+        console.log('Hello, I\'m a robot. My name\'s ' + this.name + '.');
+    }
+
+    makeCoffee() {
+        console.log('It\'s 4 coffee for you!');
+    }
+
+    blinkLights() {
+        console.log('See, I lighting 4 times!');
+    }
 }
 
-function SpaceRobot(name, year, owner, homePlanet) {
-    this.name = name;
-    this.year = year;
-    this.owner = owner;
-    this.homePlanet = homePlanet;
+class SpaceRobot extends Robot {
+    constructor(name, year, owner, homePlanet) {
+        super(name, year, owner);
+        this.homePlanet = homePlanet;
+    }
+
+    speak() {
+        alert(this.name + ' says Sir, If I may venture an opinion...');
+    }
+
+    pilot() {
+        alert(this.name + ' says Thrusters? Are they important?');
+    }
 }
 
 Robot.prototype.maker = 'ObjectsRUs';
-
-Robot.prototype.speak = function () {
-    console.log('Hello, I\'m a robot. My name\'s ' + this.name + '.');
-}
-
-Robot.prototype.makeCoffee = function () {
-    console.log('It\'s 4 coffee for you!');
-}
-
-Robot.prototype.blinkLights = function () {
-    console.log('See, I lighting 4 times!');
-}
-
-SpaceRobot.prototype = new Robot();
-
-SpaceRobot.prototype.speak = function () {
-    alert(this.name + ' says Sir, If I may venture an opinion...');
-};
-
-SpaceRobot.prototype.pilot = function () {
-    alert(this.name + ' says Thrusters? Are they important?');
-};
-
 
 let robby = new Robot('Robby', 1956, 'Dr. Morbius');
 
